@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  
+  nginx:
+    build: ./requirements/nginx
+    image: nginx:mwen
+    container_name: nginx
+    restart: always
+    # depends_on: 
+      # - wordpress
+    ports:
+      - 443:443
+    # volumes:
+      # - webserv:/var/www/html
+    # networks:
+      # - inception

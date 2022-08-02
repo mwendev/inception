@@ -1,0 +1,15 @@
+FROM	debian:buster
+
+RUN		apt-get update && apt-get install -y openssl nginx
+
+RUN		mkdir /etc/nginx/ssl
+# Generate a self-signed certificate
+RUN		openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
+		-out /etc/nginx/ssl/mwen.pem \
+		-keyout /etc/nginx/ssl/mwen.key \
+
+# Configure nginx
+COPY	$PWD/conf/nginx.conf /etc/nginx/sites-available/default
+
+# Start nginx with PID1
+CMD ["nginx", "-g", "daemon off;"]
