@@ -6,11 +6,13 @@ networks:
 
 volumes:
   DB:
+    name: DB
     driver_opts:
       o: bind
       type: none
       device: ${PROJECT_VOLUME_DATABASE}
   WordPress:
+    name: WordPress
     driver_opts:
       o: bind
       type: none
