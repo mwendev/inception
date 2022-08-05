@@ -18,11 +18,21 @@ services:
       type: none
       device: ${PROJECT_VOLUME_WORDPRESS}
 
+  mariadb:
+    build: ./requirements/mariadb
+    image: mariadb:mwen
+    container_name: mariadb
+    volumes:
+      - DB:/var/lib/mysql
+    networks:
+      - inception
+    restart: unless-stopped
+
   nginx:
     build: ./requirements/nginx
     image: nginx:mwen
     container_name: nginx
-    restart: always
+    restart: unless-stopped
     # depends_on: 
       # - wordpress
     ports:
@@ -32,16 +42,4 @@ services:
     networks:
       - inception
 
-  wordpress:
-    build: ./requirements/wordpress
-    image: wordpress:mwen
-    container_name: wordpress
-    restart: always
-    ports:
-      - 9000:9000
-    # depends_on: 
-      # - database
-    volumes:
-      - WordPress:/var/www/html
-    networks:
-      - inception
+
