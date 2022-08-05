@@ -22,6 +22,8 @@ services:
     build: ./requirements/mariadb
     image: mariadb:mwen
     container_name: mariadb
+    ports:
+      - "3306:3306"
     volumes:
       - DB:/var/lib/mysql
     networks:
@@ -32,7 +34,6 @@ services:
     build: ./requirements/nginx
     image: nginx:mwen
     container_name: nginx
-    restart: unless-stopped
     # depends_on: 
       # - wordpress
     ports:
@@ -41,5 +42,6 @@ services:
       - WordPress:/var/www/html
     networks:
       - inception
+    restart: unless-stopped
 
 
