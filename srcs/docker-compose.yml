@@ -1,22 +1,22 @@
 version: '3.8'
 
-services:
-  
-  networks:
-    inception:
-      name: inception
+networks:
+  inception:
+    name: inception
 
-  volumes:
-    DB:
-      driver_opts:
-        o: bind
-        type: none
-        device: ${PROJECT_VOLUME_DATABASE}
-    WordPress:
-      driver_opts:
-        o: bind
-        type: none
-        device: ${PROJECT_VOLUME_WORDPRESS}
+volumes:
+  DB:
+    driver_opts:
+      o: bind
+      type: none
+      device: ${PROJECT_VOLUME_DATABASE}
+  WordPress:
+    driver_opts:
+      o: bind
+      type: none
+      device: ${PROJECT_VOLUME_WORDPRESS}
+
+services:
 
   mariadb:
     build: ./requirements/mariadb
