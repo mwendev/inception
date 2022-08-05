@@ -7,6 +7,7 @@ RUN		mkdir /etc/nginx/ssl
 RUN		openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
 		-out /etc/nginx/ssl/mwen.pem \
 		-keyout /etc/nginx/ssl/mwen.key \
+		-subj "/C=DE/ST=Berlin/L=Berlin/O=42/OU=Wolfsburg/CN=mwen/"
 
 # Configure nginx
 COPY	$PWD/conf/nginx.conf /etc/nginx/sites-available/default

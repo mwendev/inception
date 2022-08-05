@@ -1,7 +1,7 @@
 NAME	= inception
 SRCS	= ./srcs/docker-compose.yml
 
-.SILENT
+.SILENT:
 $(NAME):	$(SRCS) domain
 	mkdir -p ${HOME}/data
 	docker system prune -f
