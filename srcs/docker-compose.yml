@@ -7,16 +7,16 @@ services:
       name: inception
 
   volumes:
-  DB:
-    driver_opts:
-      o: bind
-      type: none
-      device: ${PROJECT_VOLUME_DATABASE}
-  WordPress:
-    driver_opts:
-      o: bind
-      type: none
-      device: ${PROJECT_VOLUME_WORDPRESS}
+    DB:
+      driver_opts:
+        o: bind
+        type: none
+        device: ${PROJECT_VOLUME_DATABASE}
+    WordPress:
+      driver_opts:
+        o: bind
+        type: none
+        device: ${PROJECT_VOLUME_WORDPRESS}
 
   mariadb:
     build: ./requirements/mariadb
