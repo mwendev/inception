@@ -1,6 +1,6 @@
 FROM	debian:buster
 #install PHP-FPM and some common modules to run a PHP application like WordPress
-RUN		apt-get update && apt-get install -y php7.4 php-fpm 
+RUN		apt-get update && apt-get install -y php-fpm 
 #config PHP-FPM
 COPY	./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 #install WordPress and make command wp available
