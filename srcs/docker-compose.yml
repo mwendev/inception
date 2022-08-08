@@ -32,7 +32,7 @@ services:
       - inception
     restart: unless-stopped
 
-   wordpress:
+  wordpress:
     build: ./requirements/wordpress
     image: wordpress:mwen
     container_name: wordpress
