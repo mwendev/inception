@@ -9,11 +9,14 @@ $(NAME):	$(SRCS) domain
 
 all:	$(NAME)
 
-clean:	$(SRCS)
+clean:
 	docker compose -f $(SRCS) down
+	docker rmi -f $$(docker images -qa)
 	docker volume rm $$(docker volume ls -q)
 	docker network rm $$(docker network ls -q)
-	docker rmi -f $$(docker images -qa)
+
+fclean:
+	rm -rf /home/mwen/data
 
 domain:
 	echo "Need admin to add domain to /etc/hosts file"
