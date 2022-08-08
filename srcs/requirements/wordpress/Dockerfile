@@ -9,7 +9,7 @@ RUN	mkdir -p /var/www/html && apt-get install -y wget && \
 	&& chmod +x wp-cli.phar \
 	&& mv wp-cli.phar /usr/local/bin/wp;
 #config WordPress
-RUN	cd /var/www/html && wp core download --allow-root && mv ./conf/wp-config.php ./
+RUN	cd /var/www/html && wp core download --allow-root && mv ./conf/wp-config.php /var/www/html
 
 #set user
 RUN	wp core install --allow-root --url=${WP_URL} --title=${WP_TITLE} --admin_user=${WP_ADMIN_LOGIN} --admin_password=${WP_ADMIN_PASSWORD} --admin_email=${WP_ADMIN_EMAIL}
