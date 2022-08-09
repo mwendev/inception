@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Repo Summary</title>
+	<link rel="icon" type="image/png" href="assets/searchicon.png">
+	<style>
+	html {
+		background: linear-gradient(white 30%, #39afee);
+		height: 100%;
+		width: 100%;
+		background-position: center;
+	    background-repeat: repeat-x;
+		background-size: cover;
+		background-color: #39afee;
+	}
+	</style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body class="bg-transparent">
+	<div class="text-center mx-auto">
+		<img src="./assets/GitHub-Logo.png" width="10%" height="auto" style="padding-top: 2%;"class="rounded mx-auto d-block"/>
+		<h2 class="mt-1">Repo Summary</h2><br>
+	<form id="gitHubForm" class="form-inline mx-auto" style="width: 200px">
+		<input id="usernameInput" class="form-control mb-3 mx-auto" type="text" name="username" placeholder="GitHub Username" autofocus>
+		<input type="submit" class="btn btn-primary ml-2 mb-5 mx-auto" value="Submit">
+	</form>
+	</div>
+	<ul id="userRepos" class="list-group mx-auto mb-5" style="width: 500px">
+
+	</ul>
+
+	<script src="app.js"></script>
+</body>
+
+</html>
