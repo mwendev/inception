@@ -2,7 +2,7 @@
 
 #wait for mysql
 while ! mariadb -h'localhost:3306' -u$MARIADB_USER_NAME -p$MARIADB_USER_PWD $MARIADB_DB_NAME &>/dev/null; do
-    sleep 3
+	sleep 3
 done
 
 if [ ! -f "/var/www/html/index.html" ]; then
