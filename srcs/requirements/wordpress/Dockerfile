@@ -15,7 +15,7 @@ RUN	apt-get install -y wget && \
 RUN	wp core download --allow-root
 
 #static web
-COPY conf/greppo /tmp/
+COPY conf/greppo/* /tmp/greppo/
 
 #install wordpress, create config file and set user
 COPY tools/wp-config.sh /tmp/wp-config.sh
