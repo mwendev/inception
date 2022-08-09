@@ -2,7 +2,7 @@ NAME	= inception
 SRCS	= ./srcs/docker-compose.yml
 
 .SILENT:
-$(NAME):	$(SRCS) domain
+$(NAME):	$(SRCS)
 	mkdir -p /home/mwen/data
 	docker system prune -f
 	docker compose -f $(SRCS) up --build -d
@@ -13,7 +13,7 @@ clean:
 	docker compose -f $(SRCS) down
 	docker rmi -f $$(docker images -qa)
 	docker volume rm $$(docker volume ls -q)
-	docker network rm $$(docker network ls -q)
+	docker network -f prune
 
 fclean:
 	rm -rf /home/mwen/data
