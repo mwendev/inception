@@ -11,7 +11,7 @@ RUN	apt-get install -y wget && \
 	&& chmod +x wp-cli.phar \
 	&& mv wp-cli.phar /usr/local/bin/wp;
 #download wordpress and config WordPress
-RUN	wp core download && mv ./conf/wp-config.php /var/www/html
+RUN	wp core download --force --skip-content  && mv ./conf/wp-config.php /var/www/html
 
 #install wordpress and set user
 RUN	wp core install --url=${WP_URL} --title=${WP_TITLE} --admin_user=${WP_ADMIN_LOGIN} --admin_password=${WP_ADMIN_PASSWORD} --admin_email=${WP_ADMIN_EMAIL}
