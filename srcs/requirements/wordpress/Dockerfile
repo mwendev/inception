@@ -13,10 +13,9 @@ RUN	apt-get install -y wget && \
 	&& mv wp-cli.phar /usr/local/bin/wp;
 #download wordpress and config WordPress
 RUN	wp core download --allow-root
-#config WordPress
-COPY ./conf/wp-config.php /var/www/html
 
-#install wordpress and set user
+#install wordpress, create config file and set user
+RUN wp config create --allow-root --dbname=$MARIADB_DB_NAME --dbuser=$MARIADB_USER_NAME --dbpass=$MARIADB_USER_PWD --dbhost='localhost' --dbcharset="utf8" --dbcollate="utf8_general_ci"
 RUN	wp core install --allow-root --url=${WP_URL} --title=${WP_TITLE} --admin_user=${WP_ADMIN_LOGIN} --admin_password=${WP_ADMIN_PASSWORD} --admin_email=${WP_ADMIN_EMAIL}
 RUN	wp user create --allow-root ${WP_USER_LOGIN} ${WP_USER_EMAIL} --user_pass=${WP_USER_PASSWORD}
 
