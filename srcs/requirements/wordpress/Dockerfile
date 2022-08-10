@@ -65,19 +65,22 @@ COPY conf/php-fpm.conf /etc/php7/php-fpm.conf
 COPY conf/www.conf /etc/php7/php-fpm.d/www.conf
 
 #install wp-cli command tool to download wordpress
-RUN	apt-get install -y wget && \
-	wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
-	&& chmod +x wp-cli.phar \
-	&& mv wp-cli.phar /usr/local/bin/wp;
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN cp wp-cli.phar /usr/bin/wp
+# RUN	apt-get install -y wget && \
+	# wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+	# && chmod +x wp-cli.phar \
+	# && mv wp-cli.phar /usr/local/bin/wp;
 
 #static web
 COPY conf/index.html /tmp/index.html
 
 #download wordpress in nginx root so nginx finds index.php
-WORKDIR	/var/www/html
+# WORKDIR	/var/www/html
 #download wordpress
-RUN	wp core download --allow-root
-
+# RUN	wp core download --allow-root
+WORKDIR /var/www/html/wordpress
 #install wordpress, create config file and set user
 COPY tools/wp-config.sh /tmp/wp-config.sh
 ENTRYPOINT [ "sh", "/tmp/wp-config.sh" ]
