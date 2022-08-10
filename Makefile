@@ -3,7 +3,8 @@ SRCS	= ./srcs/docker-compose.yml
 
 .SILENT:
 $(NAME):	$(SRCS) domain
-	mkdir -p /home/mwen/data
+	mkdir -p /home/mwen/data/database
+	mkdir -p /home/mwen/data/wordpress
 	docker system prune -f
 	docker compose -f $(SRCS) up --build -d
 

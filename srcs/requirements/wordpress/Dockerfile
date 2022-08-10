@@ -10,14 +10,13 @@ RUN	apt-get install -y wget && \
 	wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
 	&& chmod +x wp-cli.phar \
 	&& mv wp-cli.phar /usr/local/bin/wp;
-#download and config wordpress
-RUN	wp core download --allow-root
 
 #static web
-COPY conf/greppo/* /tmp/greppo/
-RUN ls /tmp/greppo/
+COPY conf/greppo /tmp/
 
-WORKDIR	/var/www/html/wordpress
+WORKDIR	/var/www/html
+#download
+RUN	wp core download --allow-root
 #install wordpress, create config file and set user
 COPY tools/wp-config.sh /tmp/wp-config.sh
 ENTRYPOINT [ "sh", "/tmp/configure.sh" ]
