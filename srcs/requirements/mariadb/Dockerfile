@@ -3,7 +3,7 @@ FROM	alpine:3.13
 RUN		apk update && apk upgrade && apk add --no-cache \
         mariadb \
         mariadb-client
-        
+EXOPOSE 3306
 COPY tools/db-config.sh /tmp/db-config.sh
 
 ENTRYPOINT ["sh", "/tmp/db-config.sh"]
