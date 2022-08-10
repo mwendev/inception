@@ -29,7 +29,7 @@ define( 'DB_USER', '$MARIADB_USER_NAME' );
 define( 'DB_PASSWORD', '$MARIADB_USER_PWD' );
 
 /** Database hostname */
-define( 'DB_HOST', 'localhost:3306' );
+define( 'DB_HOST', 'localhost' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
