@@ -14,10 +14,11 @@ RUN	apt-get install -y wget && \
 #static web
 COPY conf/greppo /tmp/
 
+#download wordpress in nginx root so nginx finds index.php
 WORKDIR	/var/www/html
 #download wordpress
 RUN	wp core download --allow-root
-#install wordpress, create config file and set user
 
+#install wordpress, create config file and set user
 COPY tools/wp-config.sh /tmp/wp-config.sh
 ENTRYPOINT [ "sh", "/tmp/wp-config.sh" ]
