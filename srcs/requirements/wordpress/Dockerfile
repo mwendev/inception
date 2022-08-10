@@ -1,17 +1,19 @@
 FROM	debian:buster
 EXPOSE	9000
 #install PHP-FPM and some common modules to run a PHP application like WordPress
-RUN		apt-get update && apt-get install -y php-fpm 
+RUN		apt-get update && apt-get install -y php-fpm 7.4
 #config PHP-FPM
 COPY	./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
-#install wp-cli command tool
-RUN	mkdir -p /var/www/html \
+
+RUN	mkdir -p /var/www/html/wordpress
+
+#install wp-cli command tool to download wordpress
 WORKDIR	/var/www
 RUN	apt-get install -y wget && \
 	wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
 	&& chmod +x wp-cli.phar \
 	&& mv wp-cli.phar /usr/local/bin/wp;
-#download wordpress and config WordPress
+#download and config wordpress
 RUN	wp core download --allow-root
 
 #static web
