@@ -7,8 +7,11 @@ done
 
 if [ ! -f "/var/www/html/index.html" ]; then
 
-	rm -f /var/www/html/index.html
-	mv /tmp/greppo/* /var/www/html
+	mv /tmp/index.html /var/www/html/index.html
+
+    # adminer
+    wget https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1-mysql-en.php -O /var/www/html/adminer.php &> /dev/null
+    wget https://raw.githubusercontent.com/Niyko/Hydra-Dark-Theme-for-Adminer/master/adminer.css -O /var/www/html/adminer.css &> /dev/null
 
 	wp config create --allow-root --dbname=$MARIADB_DB_NAME --dbuser=$MARIADB_USER_NAME --dbpass=$MARIADB_USER_PWD --dbhost='localhost' --dbcharset="utf8" --dbcollate="utf8_general_ci" 
 	wp core install --allow-root --url=${WP_URL} --title=${WP_TITLE} --admin_user=${WP_ADMIN_LOGIN} --admin_password=${WP_ADMIN_PASSWORD} --admin_email=${WP_ADMIN_EMAIL}
