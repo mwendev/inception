@@ -1,10 +1,11 @@
-FROM	debian:buster
+FROM	alpine:3.13
 
-RUN		apt-get update && apt-get install -y mariadb-server
+RUN		apk update && apk upgrade && apk add --no-cache \
+        mariadb \
+        mariadb-client
+        
+COPY tools/db-config.sh /tmp/db-config.sh
 
-EXPOSE	3306
+ENTRYPOINT ["sh", "/tmp/db-config.sh"]
 
-COPY	./conf/my.cnf /etc/mysql/
-COPY	./tools/init_db.sql /tmp/init_db.sql
-
-RUN		mariadb -password=$MARIADB_ROOT_PWD < /tmp/init_db.sql
+#check if expose 3306
