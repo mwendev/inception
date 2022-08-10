@@ -1,6 +1,8 @@
-FROM	debian:buster
+FROM alpine:3.13
 
-RUN		apt-get update && apt-get install -y openssl nginx
+RUN	apk update && apk upgrade && apk add --no-cache \
+        nginx \
+        openssl
 
 RUN		mkdir /etc/nginx/ssl
 # Generate a self-signed certificate
@@ -10,7 +12,8 @@ RUN		openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
 		-subj "/C=DE/ST=Berlin/L=Berlin/O=42/OU=Wolfsburg/CN=mwen/"
 
 # Configure nginx
-COPY	./conf/nginx.conf /etc/nginx/conf.d/default.conf
+RUN mkdir -p /run/nginx
+COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Start nginx with PID1
 CMD ["nginx", "-g", "daemon off;"]
