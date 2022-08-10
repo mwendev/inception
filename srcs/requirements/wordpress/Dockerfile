@@ -20,4 +20,4 @@ RUN	wp core download --allow-root
 #install wordpress, create config file and set user
 
 COPY tools/wp-config.sh /tmp/wp-config.sh
-ENTRYPOINT [ "sh", "/tmp/config.sh" ]
+ENTRYPOINT [ "sh", "/tmp/wp-config.sh" ]
