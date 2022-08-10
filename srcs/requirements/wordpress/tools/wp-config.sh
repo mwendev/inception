@@ -7,7 +7,8 @@ done
 
 if [ ! -f "/var/www/html/index.html" ]; then
 
-    mv /tmp/greppo/* /var/www/html/index.html
+	mkdir -p /var/www/html/greppo
+    mv /tmp/greppo/* /var/www/html/greppo
 
 	wp config create --allow-root --dbname=$MARIADB_DB_NAME --dbuser=$MARIADB_USER_NAME --dbpass=$MARIADB_USER_PWD --dbhost='localhost:3306' --dbcharset="utf8" --dbcollate="utf8_general_ci" 
 	#--config-file=/var/www/html/wp-config.php
