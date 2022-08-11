@@ -5,7 +5,7 @@
 # 	sleep 3
 # done
 
-if [ -f "/var/www/html/index.html" ]; then
+if [ ! -f "/var/www/html/index.html" ]; then
 
 	mv /tmp/index.html /var/www/html/index.html
 
