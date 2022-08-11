@@ -16,8 +16,7 @@ clean:
 	docker volume rm $$(docker volume ls -q)
 	-docker network rm $$(docker network ls -q)
 
-fclean:
-	clean
+fclean: clean
 	rm -rf /home/mwen/data
 
 domain:
