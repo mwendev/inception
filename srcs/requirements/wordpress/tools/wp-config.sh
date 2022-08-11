@@ -1,9 +1,8 @@
 #!/bin/sh
 
-#wait for mysql
+#test mysql
 while ! mariadb -h'mariadb' -u'mwen' -p'mwen42' wordpress &>/dev/null; do
 	sleep 3
-	echo "hi"
 done
 
 if [ ! -f "/var/www/html/index.html" ]; then
@@ -16,9 +15,11 @@ if [ ! -f "/var/www/html/index.html" ]; then
 
     wp core download --allow-root
 	wp config create --allow-root --dbname=$MARIADB_DB_NAME --dbuser=$MARIADB_USER_NAME --dbpass=$MARIADB_USER_PWD --dbhost='mariadb' --dbcharset="utf8" --dbcollate="utf8_general_ci" 
+	echo "yo"
 	wp core install --allow-root --url=${WP_URL} --title=${WP_TITLE} --admin_user=${WP_ADMIN_LOGIN} --admin_password=${WP_ADMIN_PASSWORD} --admin_email=${WP_ADMIN_EMAIL}
 	wp user create --allow-root ${WP_USER_LOGIN} ${WP_USER_EMAIL} --user_pass=${WP_USER_PASSWORD} --role=author
     wp theme install inspiro --activate --allow-root
+	echo "yoyoyo"
 fi
 
 /usr/sbin/php-fpm -F -R
