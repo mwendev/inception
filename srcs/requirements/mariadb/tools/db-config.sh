@@ -5,7 +5,7 @@ if [ ! -d "/run/mysqld" ]; then
 	chown -R mysql:root /run/mysqld
 fi
 echo "1"
-if [ ! -d "/var/lib/mysql" ]; then
+if [ -d "/var/lib/mysql" ]; then
 	
 	chown -R mysql:root /var/lib/mysql
 
