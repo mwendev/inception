@@ -76,7 +76,7 @@ COPY conf/index.html /tmp/index.html
 # WORKDIR	/var/www/html
 #download wordpress
 # RUN	wp core download --allow-root
-WORKDIR /var/www/html/wordpress
+WORKDIR /var/www/html
 #install wordpress, create config file and set user
 COPY tools/wp-config.sh /tmp/wp-config.sh
 ENTRYPOINT [ "sh", "/tmp/wp-config.sh" ]
