@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# if [ ! -d "/run/mysqld" ]; then
-# 	mkdir -p /run/mysqld
-# 	chown -R mysql:mysql /run/mysqld
-# fi
+if [ ! -d "/run/mysqld" ]; then
+	mkdir -p /run/mysqld
+	chown -R mysql:mysql /run/mysqld
+fi
 
 if [ -d "/var/lib/mysql" ]; then
 	
