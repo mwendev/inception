@@ -12,22 +12,13 @@ if [ -d "/var/lib/mysql" ]; then
 	#init database
 	mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --rpm > /dev/null
 
-	tfile=`mktemp`
-	if [ ! -f "$tfile" ]; then
-		return 1
-	fi
 	echo "2"
 
 	# https://stackoverflow.com/questions/10299148/mysql-error-1045-28000-access-denied-for-user-billlocalhost-using-passw
-	cat << EOF > $tfile
-CREATE DATABASE IF NOT EXISTS $MARIADB_DB_NAME;
-CREATE USER IF NOT EXISTS '$MARIADB_USER_NAME'@'%' IDENTIFIED by '$MARIADB_USER_PWD';
-GRANT ALL PRIVILEGES ON $MARIADB_DB_NAME.* TO '$MARIADB_USER_NAME'@'%';
-FLUSH PRIVILEGES;
-EOF
+
 	# run init.sql
-	/usr/bin/mysqld --user=mysql --bootstrap < $tfile
-	rm -f $tfile
+	/usr/bin/mysqld --user=mysql --bootstrap < /tmp/init_db.sql
+	rm -f /tmp/init_db.sql
 fi
 
 echo "3"
