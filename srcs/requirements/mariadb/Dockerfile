@@ -6,7 +6,7 @@ RUN		apk update && apk upgrade && apk add --no-cache \
 
 COPY tools/db-config.sh /tmp/db-config.sh
 COPY tools/init_db.sql /tmp/init_db.sql
-# COPY	/conf/my.cnf /etc/mysql/my.cnf
+COPY	/conf/my.cnf /etc/mysql/my.cnf
 
 ENTRYPOINT ["sh", "/tmp/db-config.sh"]
 
