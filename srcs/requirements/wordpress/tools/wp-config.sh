@@ -22,4 +22,4 @@ if [ ! -f "/var/www/html/index.html" ]; then
 	echo "yoyoyo"
 fi
 
-/usr/sbin/php-fpm -F -R
+/usr/sbin/php-fpm7 -F -R
