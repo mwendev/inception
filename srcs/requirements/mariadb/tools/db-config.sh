@@ -1,16 +1,16 @@
 !/bin/sh
 
-# if [ ! -d "/run/mysqld" ]; then
-# 	mkdir -p /run/mysqld
-# 	chown -R mysql:mysql /run/mysqld
-# fi
+if [ ! -d "/run/mysqld" ]; then
+	mkdir -p /run/mysqld
+	chown -R mysql:mysql /run/mysqld
+fi
 
 if [ ! -d "/var/lib/mysql/mysql" ]; then
 	
-	# chown -R mysql:mysql /var/lib/mysql
+	chown -R mysql:mysql /var/lib/mysql
 
-	# init database
-	# mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --rpm > /dev/null
+	init database
+	mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --rpm > /dev/null
 
 	tfile=`mktemp`
 	if [ ! -f "$tfile" ]; then
