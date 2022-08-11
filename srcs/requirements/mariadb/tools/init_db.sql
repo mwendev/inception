@@ -2,6 +2,7 @@
 FLUSH PRIVILEGES;
 
 ALTER USER 'root'@'wordpress.inception' IDENTIFIED BY 'rootmwen42';
+FLUSH PRIVILEGES;
 
 CREATE DATABASE IF NOT EXISTS wordpress;
 
