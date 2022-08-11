@@ -17,7 +17,9 @@ if [ -f "/var/www/html/index.html" ]; then
     wp core download --allow-root
 	echo "yo"
 	wp core install --allow-root --url=${WP_URL} --title=${WP_TITLE} --admin_user=${WP_ADMIN_LOGIN} --admin_password=${WP_ADMIN_PASSWORD} --admin_email=${WP_ADMIN_EMAIL}
+	echo "who wants php"
 	wp user create --allow-root ${WP_USER_LOGIN} ${WP_USER_EMAIL} --user_pass=${WP_USER_PASSWORD} --role=author
+ 	echo "is it you"
     wp theme install inspiro --activate --allow-root
 	echo "yoyoyo"
 fi
