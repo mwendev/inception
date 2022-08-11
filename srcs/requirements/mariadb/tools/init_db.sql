@@ -6,6 +6,6 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY 'rootmwen42';
 CREATE DATABASE IF NOT EXISTS wordpress;
 
 CREATE USER IF NOT EXISTS 'mwen'@'%' IDENTIFIED BY 'mwen42';
-GRANT ALL PRIVILEGES ON wordpress.* TO $mwen@'%';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'mwen'@'%';
 
 FLUSH PRIVILEGES;
