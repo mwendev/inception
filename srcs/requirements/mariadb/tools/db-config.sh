@@ -4,7 +4,7 @@ if [ ! -d "/run/mysqld" ]; then
 	mkdir -p /run/mysqld
 	chown -R mysql:root /run/mysqld
 fi
-echo "1"
+
 if [ -d "/var/lib/mysql" ]; then
 	
 	chown -R mysql:root /var/lib/mysql
@@ -21,9 +21,8 @@ if [ -d "/var/lib/mysql" ]; then
 	rm -f /tmp/init_db.sql
 fi
 
-echo "3"
 # allow remote connections
 sed -i "s|skip-networking|# skip-networking|g" /etc/my.cnf.d/mariadb-server.cnf
 sed -i "s|.*bind-address\s*=.*|bind-address=0.0.0.0|g" /etc/my.cnf.d/mariadb-server.cnf
 
-exec systemctl status mariadb
+exec ps
