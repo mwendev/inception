@@ -10,7 +10,7 @@ if [ -d "/var/lib/mysql" ]; then
 	chown -R mysql:mysql /var/lib/mysql
 
 	#init database
-	# mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --rpm > /dev/null
+	mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --rpm > /dev/null
 
 	# run init.sql
 	# /usr/bin/mysqld --user=mysql --bootstrap < /tmp/init_db.sql
@@ -23,6 +23,7 @@ CREATE USER IF NOT EXISTS '$MARIADB_USER_NAME'@'%' IDENTIFIED BY '$MARIADB_USER_
 GRANT ALL PRIVILEGES ON $MARIADB_DB_NAME.* TO '$MARIADB_USER_NAME'@'%';
 FLUSH PRIVILEGES;
 MYSQL_SCRIPT
+	echo "hi"
 fi
 
 # allow remote connections
