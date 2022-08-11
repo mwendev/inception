@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #wait for mysql
-while ! mariadb -h'mariadb' -u$MARIADB_USER_NAME -p$MARIADB_USER_PWD $MARIADB_DB_NAME &>/dev/null; do
+while ! mariadb -h'mariadb' -u $MARIADB_USER_NAME -p $MARIADB_USER_PWD $MARIADB_DB_NAME &>/dev/null; do
 	sleep 3
 	echo "hi"
 done
