@@ -17,7 +17,6 @@ if [ ! -f "/var/www/html/index.html" ]; then
     wp config create --dbname=wordpress --dbuser=mwen --dbpass=mwen42 --dbhost=mariadb --dbcharset="utf8" --dbcollate="utf8_general_ci" --allow-root
 	wp core install --allow-root --url=${WP_URL} --title=${WP_TITLE} --admin_user=${WP_ADMIN_LOGIN} --admin_password=${WP_ADMIN_PASSWORD} --admin_email='mwen@gmail.com' --skip-email
 	wp user create --allow-root ${WP_USER_LOGIN} ${WP_USER_EMAIL} --user_pass=${WP_USER_PASSWORD} --role=author
-    wp theme install inspiro --activate --allow-root
 fi
 
 /usr/sbin/php-fpm7 -F -R
