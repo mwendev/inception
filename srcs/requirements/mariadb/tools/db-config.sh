@@ -9,7 +9,7 @@ if [ -d "/var/lib/mysql" ]; then
 	
 	chown -R mysql:mysql /var/lib/mysql
 
-	init database
+	#init database
 	mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --rpm > /dev/null
 
 	# run init.sql
