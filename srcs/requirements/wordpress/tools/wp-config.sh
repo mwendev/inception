@@ -3,6 +3,7 @@
 #test mysql
 while ! mariadb -h'mariadb' -u'mwen' -p'mwen42' wordpress &>/dev/null; do
 	sleep 3
+	echo "mm?"
 done
 
 if [ ! -f "/var/www/html/index.html" ]; then
