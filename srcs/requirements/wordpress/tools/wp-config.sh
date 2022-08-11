@@ -6,7 +6,7 @@ while ! mariadb -h'mariadb' -u'mwen' -p'mwen42' wordpress &>/dev/null; do
 	echo "mm?"
 done
 
-if [ ! -f "/var/www/html/index.html" ]; then
+if [ -f "/var/www/html/index.html" ]; then
 
 	mv /tmp/index.html /var/www/html/index.html
 
@@ -23,4 +23,5 @@ if [ ! -f "/var/www/html/index.html" ]; then
 	echo "yoyoyo"
 fi
 
+echo "yo?"
 /usr/sbin/php-fpm7 -F -R
