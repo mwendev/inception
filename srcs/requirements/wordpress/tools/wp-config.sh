@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #wait for mysql
-while ! mariadb -h'mariadb' -u 'mwen' -p 'mwen42' wordpress &>/dev/null; do
+while ! mariadb -h'mariadb' -u'mwen' -p'mwen42' wordpress &>/dev/null; do
 	sleep 3
 	echo "hi"
 done
