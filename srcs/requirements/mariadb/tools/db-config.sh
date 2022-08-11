@@ -20,13 +20,10 @@ if [ -d "/var/lib/mysql" ]; then
 
 	# https://stackoverflow.com/questions/10299148/mysql-error-1045-28000-access-denied-for-user-billlocalhost-using-passw
 	cat << EOF > $tfile
-USE mysql;
-FLUSH PRIVILEGES;
-DELETE FROM	mysql.user WHERE User='';
-DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+
 ALTER USER 'root'@'localhost' IDENTIFIED BY '$MARIADB_ROOT_PWD';
 CREATE DATABASE IF NOT EXISTS $MARIADB_DB_NAME;
-CREATE USER '$MARIADB_USER_NAME'@'%' IDENTIFIED by '$MARIADB_USER_PWD';
+CREATE USER IF NOT EXISTS '$MARIADB_USER_NAME'@'%' IDENTIFIED by '$MARIADB_USER_PWD';
 GRANT ALL PRIVILEGES ON $MARIADB_DB_NAME.* TO '$MARIADB_USER_NAME'@'%';
 FLUSH PRIVILEGES;
 EOF
