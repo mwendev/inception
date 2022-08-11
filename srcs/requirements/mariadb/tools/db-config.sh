@@ -1,10 +1,5 @@
 #!/bin/sh
 
-if [ ! -d "/run/mysqld" ]; then
-	mkdir -p /run/mysqld
-	chown -R mysql:root /run/mysqld
-fi
-echo "1"
 if [ -d "/var/lib/mysql" ]; then
 	
 	chown -R mysql:root /var/lib/mysql
@@ -23,8 +18,6 @@ if [ -d "/var/lib/mysql" ]; then
 USE mysql;
 FLUSH PRIVILEGES;
 DELETE FROM	mysql.user WHERE User='';
-DROP DATABASE test;
-DELETE FROM mysql.db WHERE Db='test';
 DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
 ALTER USER 'root'@'localhost' IDENTIFIED BY '$MARIADB_ROOT_PWD';
 CREATE DATABASE $MARIADB_DB_NAME CHARACTER SET utf8 COLLATE utf8_general_ci;
