@@ -69,13 +69,13 @@ RUN		chmod +x wp-cli.phar
 RUN		cp wp-cli.phar /usr/bin/wp
 
 #static web
-COPY conf/index.html /tmp/index.html
+COPY	conf/index.html /tmp/index.html
 
 #download wordpress in nginx root so nginx finds index.php
 # WORKDIR	/var/www/html
 #download wordpress
 # RUN	wp core download --allow-root
-WORKDIR /var/www/html/wordpress
+WORKDIR	/var/www/html/wordpress
 #install wordpress, create config file and set user
-COPY tools/wp-config.sh /tmp/wp-config.sh
+COPY	conf/wp-config.sh /tmp/wp-config.sh
 ENTRYPOINT [ "sh", "/tmp/wp-config.sh" ]
