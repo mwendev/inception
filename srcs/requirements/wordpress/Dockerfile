@@ -59,14 +59,14 @@ RUN	apk update && apk upgrade && apk add --no-cache \
 # RUN		apt-get install -y php-fpm
 #config PHP-FPM
 # COPY conf/www.conf /etc/php7/php-fpm.d/www.conf
-RUN	adduser -S nginx &&	addgroup -S nginx
-COPY conf/php-fpm.conf /etc/php7/php-fpm.conf
-COPY conf/www.conf /etc/php7/php-fpm.d/www.conf
+RUN		adduser -S nginx &&	addgroup -S nginx
+COPY	conf/php-fpm.conf /etc/php7/php-fpm.conf
+COPY	conf/www.conf /etc/php7/php-fpm.d/www.conf
 
 #install wp-cli command tool to download wordpress
-RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-RUN chmod +x wp-cli.phar
-RUN cp wp-cli.phar /usr/bin/wp
+RUN		wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN		chmod +x wp-cli.phar
+RUN		cp wp-cli.phar /usr/bin/wp
 
 #static web
 COPY conf/index.html /tmp/index.html
@@ -75,7 +75,7 @@ COPY conf/index.html /tmp/index.html
 # WORKDIR	/var/www/html
 #download wordpress
 # RUN	wp core download --allow-root
-WORKDIR /var/www/html
+WORKDIR /var/www/html/wordpress
 #install wordpress, create config file and set user
 COPY tools/wp-config.sh /tmp/wp-config.sh
 ENTRYPOINT [ "sh", "/tmp/wp-config.sh" ]
