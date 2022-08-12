@@ -7,8 +7,6 @@ done
 
 if [ ! -f "/var/www/html/index.html" ]; then
 
-	mv /tmp/index.html /var/www/html/index.html
-
     # adminer
     wget https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1-mysql-en.php -O /var/www/html/adminer.php &> /dev/null
     wget https://raw.githubusercontent.com/Niyko/Hydra-Dark-Theme-for-Adminer/master/adminer.css -O /var/www/html/adminer.css &> /dev/null
