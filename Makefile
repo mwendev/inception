@@ -11,10 +11,10 @@ $(NAME):	$(SRCS)
 all:	$(NAME)
 
 clean:
-	docker compose --project-directory $(SRCS) down
-	docker rmi -f $$(docker images -qa)
-	docker volume rm $$(docker volume ls -q)
-	-docker network rm $$(docker network ls -q)
+	docker compose --project-directory $(SRCS) down 2>/dev/null
+	docker rmi -f $$(docker images -qa) 2>/dev/null
+	docker volume rm $$(docker volume ls -q) 2>/dev/null
+	docker network rm $$(docker network ls -q) 2>/dev/null
 
 fclean: clean
 	rm -rf /home/mwen/data
