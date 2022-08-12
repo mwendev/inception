@@ -1,6 +1,9 @@
 
 FLUSH PRIVILEGES;
 
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'rootmwen42';
+FLUSH PRIVILEGES;
+
 CREATE DATABASE IF NOT EXISTS wordpress;
 
 CREATE USER 'mwen'@'localhost' IDENTIFIED BY 'mwen42';

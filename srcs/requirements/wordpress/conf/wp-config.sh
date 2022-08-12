@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # #test mysql
-while ! mariadb -h'mariadb' -u'mwen' -p'mwen42' wordpress &>/dev/null; do
-	sleep 3
-done
+# while ! mariadb -h'mariadb' -u'mwen' -p'mwen42' wordpress &>/dev/null; do
+# 	sleep 3
+# done
 
 if [ ! -f "/var/www/html/index.html" ]; then
 
@@ -29,6 +29,8 @@ if [ ! -f "/var/www/html/index.html" ]; then
     wp plugin install redis-cache --activate --allow-root
     wp plugin update --all --allow-root
 fi
+
+chown nginx:nginx /var/www/html
 
 wp redis enable --allow-root
 
