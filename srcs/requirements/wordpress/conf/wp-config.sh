@@ -15,8 +15,8 @@ if [ ! -f "/var/www/html/index.html" ]; then
 
     wp core download --allow-root --force
     wp config create --dbname=wordpress --dbuser=mwen --dbpass=mwen42 --dbhost=mariadb --dbcharset="utf8" --dbcollate="utf8_general_ci" --allow-root
-	wp core install --allow-root --url=localhost --title=inception --admin_user=wpmwen --admin_password=iamadmin --admin_email=mwen@gmail.com --skip-email
-	wp user create --allow-root mwen mwen@gmail.com --user_pass=imuser --role=author
+	wp core install --allow-root --url=localhost --title=inception --admin_user=wpmwen --admin_password='iamadmin' --admin_email=wpmwen@gmail.com --skip-email
+	wp user create --allow-root mwen mwen@gmail.com --user_pass='imuser' --role=author
     wp theme install inspiro --activate --allow-root
 
     # enable redis cache
