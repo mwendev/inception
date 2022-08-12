@@ -69,7 +69,7 @@ RUN		chmod +x wp-cli.phar
 RUN		cp wp-cli.phar /usr/bin/wp
 
 #static web
-COPY	conf/greppo/* /var/www/html
+COPY	conf/greppo /tmp/
 
 WORKDIR	/var/www/html
 #install wordpress, create config file and set user
