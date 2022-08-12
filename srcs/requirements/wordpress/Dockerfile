@@ -2,6 +2,7 @@ FROM	alpine:3.13
 EXPOSE	9000
 RUN	apk update && apk upgrade && apk add --no-cache \
 		wget				\
+		#install mariadb-client to config wordpress
 		mariadb-client		\
 		redis				\
 		# Wordpress core depencencies
@@ -53,12 +54,8 @@ RUN	apk update && apk upgrade && apk add --no-cache \
 		php7-zip			\
 		php7-zlib					
 		
-#install mariadbclient to config wordpress
-# RUN		apt-get update && mariadb-client
-#install PHP-FPM and some common modules to run a PHP application like WordPress
-# RUN		apt-get install -y php-fpm
+
 #config PHP-FPM
-# COPY conf/www.conf /etc/php7/php-fpm.d/www.conf
 RUN		adduser -S nginx &&	addgroup -S nginx
 COPY	conf/php-fpm.conf /etc/php7/php-fpm.conf
 COPY	conf/www.conf /etc/php7/php-fpm.d/www.conf
@@ -69,7 +66,7 @@ RUN		chmod +x wp-cli.phar
 RUN		cp wp-cli.phar /usr/bin/wp
 
 #static web
-COPY	conf/greppo /tmp/
+COPY	conf/greppo /tmp/greppo
 
 WORKDIR	/var/www/html
 #install wordpress, create config file and set user
