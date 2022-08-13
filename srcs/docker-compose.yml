@@ -68,20 +68,6 @@ services:
 ## Bonus part ##
 ################
 
-  # ftp:
-  #   build: ./bonus/ftp
-  #   image: ftp:graja
-  #   container_name: ftp
-  #   restart: unless-stopped
-  #   depends_on: 
-  #     - webserver
-  #   ports:
-  #     - 0.0.0.0:21:21
-  #   volumes:
-  #     - webserv:/var/run/vsftpd
-  #   networks:
-  #     - inception
-
   redis:
     build: ./requirements/bonus/redis
     image: redis:mwen
@@ -106,6 +92,20 @@ services:
       - WordPress:/var/www/html
     networks:
       - inception
+    restart: unless-stopped
+
+  ftp-serv:
+    build: ./requirements/bonus/adminer/ftp-server
+    image: ftp-serv:mwen
+    container_name: ftp-serv
+    ports:
+      - 21:21
+      - 21100-21110:21100-21110
+    volumes:
+      - WordPress:/var/www/html
+    networks:
+      - inception
+    restart: unless-stopped
 
   my_web:
     build: ./requirements/bonus/my_website
@@ -117,4 +117,6 @@ services:
       - WordPress:/var/www/html
     networks:
       - inception
+    restart: unless-stopped
+
  
