@@ -1,4 +1,4 @@
-FROM	alpine:3
+FROM	alpine:3.13
 EXPOSE	9000
 RUN	apk update && apk upgrade && apk add --no-cache \
 		wget				\
