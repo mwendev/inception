@@ -108,7 +108,7 @@ services:
       - inception
 
   my_web:
-    build: ./requirements/bonus/my_web
+    build: ./requirements/bonus/my_website
     image: my_web:mwen
     container_name: my_web
     depends_on:
