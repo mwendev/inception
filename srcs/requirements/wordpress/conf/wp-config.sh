@@ -16,10 +16,10 @@ if [ ! -f "/var/www/html/index.html" ]; then
 	wp core download --allow-root --force
 	wp config create --dbname=wordpress --dbuser=mwen --dbpass=mwen42 --dbhost=mariadb --dbcharset="utf8" --dbcollate="utf8_general_ci" --allow-root
 	wp core install --allow-root --url=localhost --title=inception --admin_user=wpmwen --admin_password="Iamadmin123" --admin_email=wpmwen@gmail.com --skip-email
-	wp user create --allow-root $WP_USER_LOGIN mwen@gmail.com --user_pass="Imuser123" --role=author
-	wp user update wpmwen --user_pass=Iamadmin123;
-	wp user update mwen --user_pass=Imuser123;
-	wp theme install inspiro --activate --allow-root
+	wp user create --allow-root mwen mwen@gmail.com --user_pass="Imuser123" --role=author
+	#in case wordpress assigns random password cuz password was too weak
+	wp user update --allow-root wpmwen --user_pass=Iamadmin123;
+	wp user update --allow-root mwen --user_pass=Imuser123;
 
 	# enable redis cache
 	sed -i "40i define( 'WP_REDIS_HOST', 'redis' );"			wp-config.php

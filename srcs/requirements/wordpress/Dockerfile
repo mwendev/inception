@@ -1,6 +1,5 @@
 FROM	alpine:3.13
-EXPOSE	9000
-RUN	apk update && apk upgrade && apk add --no-cache \
+RUN		apk update && apk upgrade && apk add --no-cache \
 		wget				\
 		tar					\
 		# install mariadb-client to config wordpress
@@ -53,8 +52,9 @@ RUN	apk update && apk upgrade && apk add --no-cache \
 		php7-xmlwriter		\
 		php7-xsl			\
 		php7-zip			\
-		php7-zlib					
-		
+		php7-zlib
+
+EXPOSE	9000
 
 #config PHP-FPM
 RUN		adduser -S nginx &&	addgroup -S nginx
@@ -73,3 +73,7 @@ WORKDIR	/var/www/html
 #install wordpress, create config file and set user
 COPY	conf/wp-config.sh /tmp/wp-config.sh
 ENTRYPOINT [ "sh", "/tmp/wp-config.sh" ]
+
+# test env
+# solve rewrite
+# solve leave comment
