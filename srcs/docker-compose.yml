@@ -28,6 +28,8 @@ services:
       - 3306:3306
     volumes:
       - DB:/var/lib/mysql
+    env_file:
+      - .env
     networks:
       - inception
     restart: unless-stopped
@@ -42,6 +44,8 @@ services:
       - mariadb
     volumes:
       - WordPress:/var/www/html
+    env_file:
+      - .env
     networks:
       - inception
     restart: unless-stopped

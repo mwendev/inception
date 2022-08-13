@@ -12,8 +12,8 @@ RUN		openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
 		-subj "/C=DE/ST=Berlin/L=Berlin/O=42/OU=Wolfsburg/CN=mwen/"
 
 # Configure nginx
-RUN mkdir -p /run/nginx
-COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
+RUN		mkdir -p /run/nginx
+COPY	conf/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Start nginx with PID1
 CMD ["nginx", "-g", "daemon off;"]
