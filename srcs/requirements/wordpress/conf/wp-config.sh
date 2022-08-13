@@ -7,11 +7,11 @@ done
 
 if [ ! -f "/var/www/html/index.html" ]; then
 
-	mv /tmp/greppo/* /var/www/html
+	# mv /tmp/greppo/* /var/www/html
 
-	# adminer
-	wget https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1-mysql-en.php -O /var/www/html/adminer.php &> /dev/null
-	wget https://raw.githubusercontent.com/Niyko/Hydra-Dark-Theme-for-Adminer/master/adminer.css -O /var/www/html/adminer.css &> /dev/null
+	# # adminer
+	# wget https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1-mysql-en.php -O /var/www/html/adminer.php &> /dev/null
+	# wget https://raw.githubusercontent.com/Niyko/Hydra-Dark-Theme-for-Adminer/master/adminer.css -O /var/www/html/adminer.css &> /dev/null
 
 	wp core download --allow-root --force
 	wp config create --dbname=wordpress --dbuser=mwen --dbpass=mwen42 --dbhost=mariadb --dbcharset="utf8" --dbcollate="utf8_general_ci" --allow-root

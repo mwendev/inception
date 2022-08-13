@@ -70,7 +70,3 @@ WORKDIR	/var/www/html
 #install wordpress, create config file and set user
 COPY	conf/wp-config.sh /tmp/wp-config.sh
 ENTRYPOINT [ "sh", "/tmp/wp-config.sh" ]
-
-# test env
-# solve rewrite
-# solve leave comment
