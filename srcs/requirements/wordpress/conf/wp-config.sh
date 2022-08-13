@@ -15,9 +15,11 @@ if [ ! -f "/var/www/html/index.html" ]; then
 
 	wp core download --allow-root --force
 	wp config create --dbname=wordpress --dbuser=mwen --dbpass=mwen42 --dbhost=mariadb --dbcharset="utf8" --dbcollate="utf8_general_ci" --allow-root
-	wp core install --allow-root --url=localhost --title=inception --admin_user=wpmwen --admin_password="Iamadmin123" --admin_email=wpmwen@gmail.com --skip-email
-	wp user create --allow-root mwen mwen@gmail.com --user_pass="Imuser123" --role=author --url=localhost
-	#in case wordpress assigns random password cuz password was too weak
+	wp core install --allow-root --url=localhost --title=inception --admin_user=wpmwen --admin_password=Iamadmin123 --admin_email=wpmwen@gmail.com --skip-email
+	wp user create --allow-root mwen mwen@gmail.com --user_pass=Imuser123 --role=author --url=localhost
+	wp theme install inspiro --activate --allow-root
+
+	#in case wordpress assigns random password
 	# wp user update --allow-root wpmwen --user_pass=Iamadmin123;
 	# wp user update --allow-root mwen --user_pass=Imuser123;
 

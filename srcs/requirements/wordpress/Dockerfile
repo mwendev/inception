@@ -66,9 +66,6 @@ RUN		wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.p
 RUN		chmod +x wp-cli.phar
 RUN		cp wp-cli.phar /usr/bin/wp
 
-#static web
-COPY	conf/greppo /tmp/greppo
-
 WORKDIR	/var/www/html
 #install wordpress, create config file and set user
 COPY	conf/wp-config.sh /tmp/wp-config.sh
