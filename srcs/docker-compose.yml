@@ -101,7 +101,7 @@ services:
     image: adminer:mwen
     container_name: adminer
     depends_on: 
-      - wordpress
+      - redis
     volumes:
       - WordPress:/var/www/html
     networks:
@@ -112,7 +112,7 @@ services:
     image: my_web:mwen
     container_name: my_web
     depends_on:
-      - wordpress
+      - adminer
     volumes:
       - WordPress:/var/www/html
     networks:
