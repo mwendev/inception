@@ -1,7 +1,9 @@
-FROM	alpine:latest
+FROM	alpine:3.13
 EXPOSE	9000
 RUN	apk update && apk upgrade && apk add --no-cache \
 		wget				\
+		tar					\
+		# install mariadb-client to config wordpress
 		mariadb-client		\
 		redis				\
 		# Wordpress core depencencies

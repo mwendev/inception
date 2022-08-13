@@ -6,7 +6,7 @@ $(NAME):	$(SRCS)
 	mkdir -p /home/mwen/data/database
 	mkdir -p /home/mwen/data/wordpress
 	docker system prune -f
-	docker compose --project-directory $(SRCS) up
+	docker compose --project-directory $(SRCS) up --build
 
 all:	$(NAME)
 
