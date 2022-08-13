@@ -87,7 +87,7 @@ services:
     image: redis:mwen
     container_name: redis
     ports:
-      -6379:6379
+      - 6379:6379
     restart: unless-stopped
     depends_on: 
       - wordpress
