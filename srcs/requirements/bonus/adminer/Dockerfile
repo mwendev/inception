@@ -7,4 +7,4 @@ RUN	wget https://raw.githubusercontent.com/Niyko/Hydra-Dark-Theme-for-Adminer/ma
 
 COPY	conf/ad-config.sh /tmp/ad-config.sh
 
-CMD	["bash", "/tmp/ad-config.sh"]
+CMD	["/bin/sh", "/tmp/ad-config.sh"]
