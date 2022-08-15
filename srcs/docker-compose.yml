@@ -125,6 +125,8 @@ services:
     build: ./requirements/bonus/weechat
     image: weechat:mwen
     container_name: weechat
+    depends_on:
+      - my_web
     restart: unless-stopped
 
 
