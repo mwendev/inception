@@ -1,5 +1,8 @@
 FROM	debian:buster
 
-RUN		apt update && apt-get install -y weechat-curses weechat-plugins weechat-python weechat-perl
+RUN		apt-get update && apt-get install -y g++ gnumake
 
-CMD	/bin/sh
+COPY	conf/irc-config.sh /tmp/irc-config.sh
+COPY	conf/irc/* /tmp/irc/
+
+ENTRYPOINT [ "sh", "/tmp/irc-config.sh" ]
