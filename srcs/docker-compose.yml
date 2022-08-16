@@ -121,10 +121,10 @@ services:
       - inception
     restart: unless-stopped
 
-  weechat:
-    build: ./requirements/bonus/weechat
-    image: weechat:mwen
-    container_name: weechat
+  irc:
+    build: ./requirements/bonus/irc
+    image: irc:mwen
+    container_name: irc
     depends_on:
       - my_web
     restart: unless-stopped
