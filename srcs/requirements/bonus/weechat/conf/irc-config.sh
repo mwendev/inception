@@ -1,6 +1,7 @@
 #!/bin/sh
 
-cp /tmp/ft_irc/ ~/ft_irc
+mkdir -p ~/ft_irc
+cp /tmp/ft_irc/* ~/ft_irc
 cd ~/ft_irc/
 make
 
