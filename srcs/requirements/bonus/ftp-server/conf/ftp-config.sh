@@ -2,6 +2,8 @@
 
 if [ ! -f "/etc/vsftpd/vsftpd.conf.bak" ]; then
 
+	mkdir -p /var/www/html
+
 	cp /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.bak
 	mv /tmp/vsftpd.conf /etc/vsftpd/vsftpd.conf
 
