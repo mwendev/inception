@@ -1,3 +1,0 @@
-[submodule "srcs/requirements/bonus/weechat/conf/ft_irc"]
-	path = srcs/requirements/bonus/weechat/conf/ft_irc
-	url = https://github.com/mwendev/inception.git
